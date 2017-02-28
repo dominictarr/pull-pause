@@ -1,7 +1,7 @@
 {
   "name": "pull-pause",
   "description": "",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/dominictarr/pull-pause",
   "repository": {
     "type": "git",
