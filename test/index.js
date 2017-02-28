@@ -1,4 +1,3 @@
-
 var tape = require('tape')
 var Pause = require('../')
 var pull = require('pull-stream')
@@ -24,7 +23,6 @@ tape('simple', function (t) {
   )
 
 })
-
 
 tape('pause, resume', function (t) {
   var p = false
@@ -73,9 +71,22 @@ tape('pause, resume', function (t) {
 
 })
 
+tape('without callback', function (t) {
+  var pause = Pause()
+  var c = 0
 
-
-
-
+  setTimeout(pause.resume, 50)
+  pull(
+    pull.count(10),
+    pause,
+    pull.drain(function (e) {
+      c += e
+      if(c == 5) pause.pause()
+    }, function () {
+      t.equal(c, 55)
+      t.end()
+    })
+  )
+})
 
 

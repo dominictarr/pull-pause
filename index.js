@@ -14,13 +14,13 @@ module.exports = function (onPause) {
 
   reader.pause = function () {
     if(paused) return
-    onPause(paused = true)
+    onPause && onPause(paused = true)
   }
 
   reader.resume = function () {
     if(!paused) return
     paused = false
-    onPause(paused)
+    onPause && onPause(paused)
     if(wait) {
       var _wait = wait
       wait = null
