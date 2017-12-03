@@ -14,7 +14,8 @@ module.exports = function (onPause) {
 
   reader.pause = function () {
     if(paused) return
-    onPause && onPause(paused = true)
+    paused = true
+    onPause && onPause(paused)
   }
 
   reader.resume = function () {
